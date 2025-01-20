@@ -1,75 +1,155 @@
 
-Data Cleaning and Analysis Project
+# Titanic Data Cleaning and Analysis Project
 
-This project is designed to clean and analyze data from a CSV file. It includes functions for loading data, checking for missing values, and filling missing values using different strategies. The project is split into three main Python files:
+This project focuses on cleaning and analyzing the Titanic dataset using Python and Pandas. It is designed with a modular approach, where different functionalities are separated into distinct files for better code organization. The project also includes a constants file for managing fixed values and setup instructions for creating a Python virtual environment.
 
-- main.py: The main script that runs the data cleaning and analysis process.
-- analysis.py: Contains functions for performing data analysis, such as calculating the mean of a column.
-- data_processing.py: Contains functions for data manipulation, such as loading the data and filling missing values.
+---
 
-Project Structure
+## **Project Structure**
 
-.
-├── main.py
-├── analysis.py
-├── data_processing.py
-└── train.csv
+```
+project/
+│
+├── constants.py         # Centralized file for constants
+├── data_processing.py   # Functions for loading and cleaning data
+├── analysis.py          # Functions for data analysis
+├── main.py              # Main script to run the project
+├── requirements.txt     # Dependencies for the project
+└── README.md            # Documentation
+```
 
-1. main.py
-The main script that orchestrates the entire process. It performs the following tasks:
-- Loads the data from a CSV file (train.csv).
-- Checks for missing values in the data.
-- Fills missing values in the Age, Cabin, and Embarked columns.
-- Prints the number of missing values before and after the cleaning process.
-- Displays the first 20 rows of the cleaned data.
+---
 
-2. analysis.py
-Contains a function to calculate the mean (average) value of a specified column in the dataset.
-- calculate_mean(df, column_name): This function calculates and returns the mean value of a given column in the DataFrame.
+## **Features**
 
-3. data_processing.py
-Contains functions for data manipulation and cleaning. It provides the following functionality:
-- load_data(file_path): Loads the data from a CSV file and returns it as a pandas DataFrame.
-- check_null_values(df): Returns the count of missing (null) values for each column in the DataFrame.
-- fill_missing_values(df, column_name, value): Fills missing values in a specified column with a given value.
-- fill_forward(df, column_name): Fills missing values in a column using forward filling (replaces missing values with the previous valid value).
+- **Centralized Constants**: 
+  - All fixed values (e.g., file paths, default values, and column names) are stored in a single `constants.py` file.
 
-Requirements
-To run this project, you need to install the following Python packages:
-- pandas: For data manipulation and analysis.
+- **Load and Clean Data**: 
+  - Load data from a CSV file.
+  - Check for missing values.
+  - Fill missing values using specified methods (e.g., mean, forward fill).
 
-You can install the required packages using pip:
+- **Analyze Data**: 
+  - Calculate the mean for specific columns.
 
-pip install pandas
+---
 
-How to Use
+## **Setup Instructions**
 
-1. Clone the repository or download the project files.
-2. Place your CSV file (train.csv) in the project directory.
-3. Run main.py to load the data, check for missing values, clean the data, and display the results.
+### **Step 1: Clone the Repository**
 
-Example command to run main.py:
+Clone the project repository to your local machine:
+```bash
+git clone <repository-url>
+cd <repository-folder>
+```
 
+### **Step 2: Create a Virtual Environment**
+
+Create a Python virtual environment to isolate project dependencies:
+```bash
+python -m venv env
+```
+
+### **Step 3: Activate the Virtual Environment**
+
+#### On Windows:
+```bash
+.\env\Scripts\activate
+```
+If you encounter an error like `running scripts is disabled`, temporarily bypass the execution policy:
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\env\Scripts\activate
+```
+
+#### On macOS/Linux:
+```bash
+source env/bin/activate
+```
+
+### **Step 4: Install Dependencies**
+
+Install the required dependencies listed in `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+
+### **Step 5: Run the Project**
+
+Execute the `main.py` script to clean and analyze the dataset:
+```bash
 python main.py
+```
 
-Example Output
-Missing values before cleaning:
-Age            100
-Cabin          200
-Embarked       10
-dtype: int64
+---
 
-Missing values after cleaning:
-Age            0
-Cabin          0
-Embarked       0
-dtype: int64
+## **Dependencies**
 
-Cleaned Data:
-   PassengerId  Age    Cabin  Embarked  ...
-0            1   22  Unknown cabin      C  ...
-1            2   38  Unknown cabin      Q  ...
-...
+The project uses the following Python library:
+- `pandas` (version 1.5.3)
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+Dependencies are managed through the `requirements.txt` file. To install them, use:
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## **How It Works**
+
+1. **Load Data**:
+   - The script reads the Titanic dataset from a CSV file (`train.csv`).
+
+2. **Clean Data**:
+   - Missing values are identified and filled using:
+     - Mean for numerical columns (e.g., `Age`).
+     - Default values for categorical columns (e.g., `Cabin`).
+     - Forward-fill for sequential data (e.g., `Embarked`).
+
+3. **Centralized Constants**:
+   - Fixed values such as file paths, column names, and default values are managed in `constants.py`. This ensures easy modification and better code organization.
+
+4. **Analyze Data**:
+   - The script calculates the mean of specific columns for insights.
+
+5. **Output Results**:
+   - Displays cleaned data and missing values summary.
+
+---
+
+## **Troubleshooting**
+
+### **Script Activation Error on Windows**
+If you encounter an error like:
+```
+File cannot be loaded because running scripts is disabled on this system.
+```
+Run the following command in PowerShell:
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+### **Missing Dependencies**
+If a required library is missing, ensure you have installed all dependencies using:
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## **License**
+This project is licensed under the MIT License.
+
+---
+
+## **Contributions**
+Contributions are welcome! Feel free to submit a pull request or report issues.
+
+---
+
+## **Contact**
+For any questions or feedback, please contact:
+- **Name**: Usman Qamar
+- **Email**: [your-email@example.com]
